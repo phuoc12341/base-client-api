@@ -1,0 +1,117 @@
+version: '3'
+services:
+
+  #PHP Service
+  php:
+    build:
+      context: ./api/.envs/dev
+      dockerfile: php/Dockerfile
+      args:
+        USERID: ${USERID}
+        GROUPID: ${GROUPID}
+    image: phuoc-php
+    container_name: app_phuoc
+    volumes:
+       - ./api/:/var/www/app
+    restart: on-failure
+    working_dir: /var/www/app
+    networks:
+      - app-network
+
+  cert:
+    build:
+      context: ./api/.envs/dev
+      dockerfile: cert/Dockerfile
+      args:
+        USERID: ${USERID}
+        GROUPID: ${GROUPID}
+    image: phuoc-cert
+    container_name: cert_phuoc
+    volumes:
+      - ./api/.envs/dev/cert/files:/files
+    networks:
+      - app-network
+    environment:
+      HT_USER: web
+      HT_PASSWORD: 123456
+
+  #Nginx Service
+  nginx:
+    image: nginx:alpine
+    container_name: webserver_phuoc
+    volumes:
+      - ./api/:/var/www/app
+      - ./api/.envs/dev/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./api/.envs/dev/cert/files:/etc/nginx/certs
+    restart: on-failure
+    tty: true
+    ports:
+      - "88:80"
+      - "8443:443"
+    networks:
+      - app-network
+
+  #MySQL Service
+  mysql:
+    image: mysql:5.7
+    container_name: db_phuoc
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./api/.envs/dev/mysql/my.cnf:/etc/mysql/my.cnf
+    restart: on-failure
+    ports:
+      - "1306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ms_root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: phuoc
+      MYSQL_PASSWORD: 1
+    networks:
+      - app-network
+
+  node:
+    build:
+      context: ./api/.envs/dev
+      dockerfile: node/Dockerfile
+    image: phuoc-node
+    volumes:
+      - ./api/:/var/www/app
+    working_dir: /var/www/app
+    networks:
+      - app-network
+
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    networks:
+      - app-network
+  
+  redis:
+    image: redis:latest
+    command: ["bash", "-c", "redis-server --requirepass $${REDIS_PASSWORD}"]
+    ports:
+      - 6379:6379
+    environment:
+      REDIS_PASSWORD: phuocdeptrai
+    networks:
+      - app-network
+
+  vuejs:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: phuoc-vuejs
+    ports:
+      - "5000:80"
+    restart: unless-stopped
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  db_data:
