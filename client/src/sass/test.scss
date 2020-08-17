@@ -1,0 +1,211 @@
+@media screen and (min-width: 2880px) {
+  .landing-page .container {
+    width: 2000px;
+    height: 1000px;
+    margin-top: 200px;
+  }
+
+  .landing-page .parallax .description {
+    h2 {
+      font-size: 60px;
+    }
+
+    h5 {
+      font-size: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .title-managerment-team {
+    text-align: center;
+  }
+
+  .ul-users {
+    padding-left: 180px;
+  }
+
+  .table-condensed .width-index-report {
+    width: 2%;
+  }
+
+  .table-condensed .width-report-function p {
+    width: 150px;
+  }
+
+  .table-condensed .width-report-mission p {
+    width: 80px;
+  }
+
+  .table-condensed .width-report-type p {
+    width: 50px;
+  }
+
+  .table-condensed .width-report-prioritize {
+    width: 5%;
+  }
+
+  .table-condensed .width-report-expected {
+    width: 10%;
+  }
+
+  .table-condensed .width-report-reality {
+    width: 10%;
+  }
+
+  .table-condensed .width-accomplished-report {
+    width: 5%;
+  }
+
+  #table-list-project {
+    .table > thead > tr > th {
+      vertical-align: unset;
+    }
+  }
+
+  .info-project-detail {
+    padding-top: 5px !important;
+  }
+
+  #table-list-employee {
+    .table > thead > tr > th {
+      vertical-align: unset;
+    }
+  }
+
+  .modal-content {
+    padding-left: 0;
+  }
+
+  .position-select-form {
+    .multiselect__content-wrapper {
+      position: fixed;
+      display: block;
+      background: $color_28;
+      width: 18.8%;
+      max-height: 240px;
+      overflow: auto;
+      border: 1px solid $color_27;
+      border-top: none;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      z-index: 1;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  .btn-create-project-employee {
+    margin-top: 5px;
+  }
+
+  .dailyreport-content-modal {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 600px;
+  }
+
+  .project-employee {
+    .vueperslides__inner {
+      .vueperslides__parallax-wrapper {
+        padding-bottom: 65% !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .btn-add-member .btn-add-team-member {
+    i {
+      font-size: 10px;
+    }
+
+    width: 20px;
+    height: 25px;
+  }
+
+  .btn {
+    padding: 3px 5px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .landing-page .container {
+    margin-top: 300px;
+  }
+
+  .model-report-add .v--modal-box {
+    top: 153px !important;
+    left: 10% !important;
+    width: 800px !important;
+  }
+
+  .dailyreport-content-modal {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 650px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .landing-page .parallax .description {
+    width: 300px;
+    height: auto;
+    margin-top: 0;
+    margin-left: 400px;
+  }
+
+  .list-member-of-project {
+    height: auto;
+  }
+
+  .model-report-add .v--modal-box {
+    top: 153px !important;
+    left: 10% !important;
+    width: 600px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #images {
+    background: url(../assets/images/backgr.png) no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    height: 100vh;
+  }
+
+  .landing-page .parallax .description {
+    width: 0;
+    height: 0;
+    margin-top: 100px;
+    margin-left: 50px;
+    opacity: 0;
+  }
+
+  .model-report-add .v--modal-box {
+    top: 50px !important;
+    left: 10% !important;
+    width: 300px !important;
+    height: 500px !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .inut-search-project-member {
+    width: auto;
+    margin-top: 8px;
+  }
+
+  .model-report-add .v--modal-box {
+    top: 10px !important;
+    left: 10% !important;
+    width: 250px !important;
+    height: 400px !important;
+  }
+}
